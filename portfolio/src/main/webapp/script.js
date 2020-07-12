@@ -26,3 +26,12 @@ function addRandomQuote() {
   const quoteContainer = document.getElementById('greeting-container');
   quoteContainer.innerText = quote;
 }
+
+/**
+* Fetches Hello Chelsea from the server and adds it to the DOM
+ */
+async function gettingRandomGreetingUsingAsyncAwait() {
+    const response = await fetch('/data');
+    const greeting = await response.text();
+    document.getElementById('testTrialGreeting-container').innerText = greeting;
+}
