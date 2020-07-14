@@ -31,7 +31,8 @@ function addRandomQuote() {
 * Fetches Hello Chelsea from the server and adds it to the DOM
  */
 async function gettingRandomGreetingUsingAsyncAwait() {
-    const response = await fetch('/data');
+    const response = await fetch('/data').then(response => response.json()).then(greeting);
     const greeting = await response.text();
+    console.log(greeting);
     document.getElementById('testTrialGreeting-container').innerText = greeting;
 }
