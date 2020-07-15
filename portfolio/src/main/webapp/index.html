@@ -17,9 +17,16 @@
       <p>Click here to get a random Star Wars Quote:</p>
       <button onclick="addRandomQuote()">Hello</button>
       <div id="greeting-container"></div>
-      <p>Click <a href="/data"> here </p>
+      <!-- <p>Click <a href="/data"> here </p>
       <button onclick ="gettingRandomGreetingUsingAsyncAwait()"> Click Here for a Greeting!</button>
-      <div id="testTrialGreeting-container"></div>
+      <div id="testTrialGreeting-container"></div> -->
+      <p> Please leave your comment here</p>
+      <form action= "/form-submission" method = "POST">
+        <input type = "text" id= "comment" name = "comment">
+        <input type = "submit"/>
+      </form>
+      <div id= "history"> </div>
+      <div id= "testTrialGreeting-container"></div>
 
     </div>
   </body>
