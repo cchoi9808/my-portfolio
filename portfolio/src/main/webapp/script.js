@@ -17,7 +17,7 @@
  */
 function addRandomQuote() {
   const quotes =
-      ['Do or do not there is no try', 'I know', 'My the Force be with you', 'Never tell me the odds'];
+      ['Do or do not there is no try', 'I know', 'May the Force be with you', 'Never tell me the odds'];
 
   // Pick a random greeting.
   const quote = quotes[Math.floor(Math.random() * quotes.length)];
