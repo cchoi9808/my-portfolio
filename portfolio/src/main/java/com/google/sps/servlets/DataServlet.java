@@ -20,21 +20,46 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
+import java.util.List;
 import java.lang.String;
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query;
 import com.google.gson.Gson;
+// import com.google.sps.data.Task;
+
 
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/form-submission")
 public class DataServlet extends HttpServlet {
+ArrayList<String> comments = new ArrayList<String>();
+  @Override
+  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException{
+    response.setContentType("text/html");
+    String jsonComments = new Gson().toJson(comments);
+    response.getWriter().println(jsonComments);
+  }
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    String comment = request.getParameter("comment");
-    ArrayList<String> comments = new ArrayList<String>();
+    Query query = new Query("Task");
+    String comment = request.getParameter("comment"); 
     comments.add(comment);
-    String jsonComments = new Gson().toJson(comments);
-    response.setContentType("application/json");
-    response.getWriter().println(jsonComments);
 
+    Entity taskComments = new Entity("storeComments");
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    
+    PreparedQuery results = datastore.prepare(query);
+    List<Entity> tasks = new ArrayList<>();
+    for (Entity entity : results.asIterable()){
+        tasks.add(entity);
+    }
+    String jsonComments = new Gson().toJson(comments);
+    datastore.put(taskComments);
+
+    response.setContentType("text/html");
+    response.getWriter().println(jsonComments);
     response.sendRedirect("/index.html");
   }
 }

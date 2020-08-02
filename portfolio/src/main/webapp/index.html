@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
   </head>
-  <body>
+  <body onload = "gettingComments()">
     <div id="content">
       <h1>My Name is Chelsea Choi </h1>
       <p> Nice to meet you! I'm currently a rising junior at Cornell University majoring in Information Science. <p> 
@@ -23,6 +23,7 @@
       <p> Please leave your comment here</p>
       <form action= "/form-submission" method = "POST">
         <input type = "text" id= "comment" name = "comment">
+        <input type="file">
         <input type = "submit"/>
       </form>
       <div id= "history"> </div>

@@ -36,11 +36,13 @@ async function gettingRandomGreetingUsingAsyncAwait() {
     console.log(greeting);
     document.getElementById('testTrialGreeting-container').innerText = greeting;
 }
+
 /**
 * Fetches comments from the server and adds it to the DOM */
-async function gettingComments(){
-    fetch('/form-response').then(response => response.json()).then((comment) => {
-    document.getElementById('history').innerText = comment;
+function gettingComments(){
+    fetch('/form-submission').then(response => response.text()).then((comment) => {
+    const commentElement = document.getElementById('history');
+    commentElement.innerText =comment; 
     });
 
 }
