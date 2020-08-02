@@ -6,13 +6,29 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
   </head>
-  <body>
+  <body onload = "gettingComments()">
     <div id="content">
-      <h1>My Portfolio</h1>
+      <h1>My Name is Chelsea Choi </h1>
+      <p> Nice to meet you! I'm currently a rising junior at Cornell University majoring in Information Science. <p> 
+      <p> I like long walks on the beach, and I'm currently learning how to box and improve my Chinese </p>
+      <img src ="/images/Chelsea.Choi.JPG" alt= "picture of me">
+      <p> Here I am in NYC </p>
       <p>This is my portfolio.</p>
-      <p>Click here to get a random message:</p>
-      <button onclick="addRandomGreeting()">Hello</button>
+      <p>Click here to get a random Star Wars Quote:</p>
+      <button onclick="addRandomQuote()">Hello</button>
       <div id="greeting-container"></div>
+      <!-- <p>Click <a href="/data"> here </p>
+      <button onclick ="gettingRandomGreetingUsingAsyncAwait()"> Click Here for a Greeting!</button>
+      <div id="testTrialGreeting-container"></div> -->
+      <p> Please leave your comment here</p>
+      <form action= "/form-submission" method = "POST">
+        <input type = "text" id= "comment" name = "comment">
+        <input type="file">
+        <input type = "submit"/>
+      </form>
+      <div id= "history"> </div>
+      <div id= "testTrialGreeting-container"></div>
+
     </div>
   </body>
 </html>

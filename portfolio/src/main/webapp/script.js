@@ -15,14 +15,34 @@
 /**
  * Adds a random greeting to the page.
  */
-function addRandomGreeting() {
-  const greetings =
-      ['Hello world!', '¡Hola Mundo!', '你好，世界！', 'Bonjour le monde!'];
+function addRandomQuote() {
+  const quotes =
+      ['Do or do not there is no try', 'I know', 'May the Force be with you', 'Never tell me the odds'];
 
   // Pick a random greeting.
-  const greeting = greetings[Math.floor(Math.random() * greetings.length)];
+  const quote = quotes[Math.floor(Math.random() * quotes.length)];
 
   // Add it to the page.
-  const greetingContainer = document.getElementById('greeting-container');
-  greetingContainer.innerText = greeting;
+  const quoteContainer = document.getElementById('greeting-container');
+  quoteContainer.innerText = quote;
+}
+
+/**
+* Fetches Hello Chelsea from the server and adds it to the DOM
+ */
+async function gettingRandomGreetingUsingAsyncAwait() {
+    const response = await fetch('/data').then(response => response.json()).then(greeting);
+    const greeting = await response.text();
+    console.log(greeting);
+    document.getElementById('testTrialGreeting-container').innerText = greeting;
+}
+
+/**
+* Fetches comments from the server and adds it to the DOM */
+function gettingComments(){
+    fetch('/form-submission').then(response => response.text()).then((comment) => {
+    const commentElement = document.getElementById('history');
+    commentElement.innerText =comment; 
+    });
+
 }
